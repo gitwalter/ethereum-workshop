@@ -1,0 +1,91 @@
+# Ethereum Workshop Rules
+
+## Project Context
+This is a learning project for the L1 Ethereum Smart Contract Workshop.
+The goal is to learn Solidity development through hands-on exercises.
+
+## Development Stack
+- Solidity 0.8.24
+- Hardhat 2.28.4
+- OpenZeppelin Contracts 5.0.2
+- Ethers.js v6
+- Chai for testing
+
+## Core Principles
+
+### Security First
+- Follow Checks-Effects-Interactions pattern
+- Use OpenZeppelin contracts for standard functionality
+- Never use tx.origin for authentication
+- Always validate inputs
+
+### Gas Efficiency
+- Pack storage variables
+- Use calldata for read-only arrays
+- Cache array lengths in loops
+- Use unchecked for safe arithmetic
+
+### Code Quality
+- Emit events for all state changes
+- Use NatSpec documentation
+- Write comprehensive tests
+- Lock pragma to specific version
+
+## When Writing Solidity
+
+1. **Always start with**:
+   ```solidity
+   // SPDX-License-Identifier: MIT
+   pragma solidity ^0.8.24;
+   ```
+
+2. **Import OpenZeppelin** for standard patterns:
+   - ERC20, ERC721 for tokens
+   - Ownable, AccessControl for permissions
+   - ReentrancyGuard for external calls
+
+3. **Document with NatSpec**:
+   ```solidity
+   /// @notice Description of the function
+   /// @param name Description of parameter
+   /// @return Description of return value
+   ```
+
+4. **Test both paths**:
+   - Success cases
+   - Failure cases (revert conditions)
+   - Edge cases
+
+## When Writing Tests
+
+1. Use descriptive test names
+2. Test deployment, functionality, and access control
+3. Use `expect(...).to.be.reverted` for failure cases
+4. Use fixtures for reusable setup
+
+## File Structure
+
+```
+contracts/     - Solidity source files
+test/          - JavaScript test files
+scripts/       - Deployment and utility scripts
+artifacts/     - Compiled contracts (generated)
+cache/         - Build cache (generated)
+```
+
+## Commands
+
+```bash
+npx hardhat compile    # Compile contracts
+npx hardhat test       # Run tests
+npx hardhat node       # Start local blockchain
+npx hardhat console    # Interactive console
+```
+
+## Learning Focus
+
+This is a workshop - prioritize understanding over complexity:
+- Keep contracts simple and readable
+- Add comments explaining why, not just what
+- Ask questions when something is unclear
+- Experiment and learn from errors
